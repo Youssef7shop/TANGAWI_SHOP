@@ -1,17 +1,17 @@
 // js/admin.js
-import { supabase } from './supabase.js';
+import { supabase } from 'supabase.js';
 
 let currentAppId = null; // تخزين آيدي الطلب المفتوح حالياً
 
 async function initAdminDashboard() {
     // 1. حماية الصفحة: التحقق من الرتبة
     const { data: { user }, error: authError } = await supabase.auth.getUser();
-    if (!user) return window.location.href = '../login.html';
+    if (!user) return window.location.href = login.html';
 
     const { data: profile } = await supabase.from('users').select('role').eq('id', user.id).single();
     if (!profile || profile.role !== 'Admin') {
         alert("لا تملك صلاحية لدخول هذه الصفحة!");
-        return window.location.href = '../whitelist.html';
+        return window.location.href = 'whitelist.html';
     }
 
     // 2. تحميل البيانات
@@ -152,7 +152,7 @@ async function updateApplicationStatus(id, newStatus, rejectReason) {
 // تسجيل الخروج
 document.getElementById('logout-btn').addEventListener('click', async () => {
     await supabase.auth.signOut();
-    window.location.href = '../login.html';
+    window.location.href = 'login.html';
 });
 
 // تشغيل اللوحة
