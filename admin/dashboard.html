@@ -1,1 +1,76 @@
+<!-- admin/dashboard.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة الإدارة - Whitelist</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css"> <!-- للتنسيقات الخاصة بالإدارة مثل الـ Modal -->
+</head>
+<body>
 
+    <nav class="admin-nav">
+        <h2>لوحة تحكم الإدارة</h2>
+        <button id="logout-btn">تسجيل الخروج</button>
+    </nav>
+
+    <div class="admin-container">
+        <!-- البطاقات الإحصائية -->
+        <div class="stats-grid">
+            <div class="stat-card">المستخدمين: <span id="count-users">0</span></div>
+            <div class="stat-card">إجمالي الطلبات: <span id="count-all">0</span></div>
+            <div class="stat-card">معلقة: <span id="count-pending">0</span></div>
+            <div class="stat-card">مقبولة: <span id="count-accepted">0</span></div>
+            <div class="stat-card">مرفوضة: <span id="count-rejected">0</span></div>
+        </div>
+
+        <!-- جدول الطلبات -->
+        <div class="table-container">
+            <h3>أحدث الطلبات (الكل)</h3>
+            <table id="applications-table">
+                <thead>
+                    <tr>
+                        <th>اللاعب (الآيدي)</th>
+                        <th>الديسكورد</th>
+                        <th>التاريخ</th>
+                        <th>الحالة</th>
+                        <th>إجراء</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- سيتم إضافة الطلبات هنا برمجياً -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- نافذة عرض التفاصيل (Modal) -->
+    <div id="app-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>تفاصيل الطلب</h2>
+            
+            <div id="app-details">
+                <p><strong>الاسم:</strong> <span id="detail-name"></span></p>
+                <p><strong>العمر:</strong> <span id="detail-age"></span></p>
+                <p><strong>قصة الشخصية:</strong> <br><span id="detail-story"></span></p>
+                <p><strong>الخبرة في RP:</strong> <br><span id="detail-exp"></span></p>
+                <p><strong>سبب الانضمام:</strong> <br><span id="detail-reason"></span></p>
+            </div>
+
+            <div class="modal-actions">
+                <button id="btn-accept" class="btn-green">قبول</button>
+                <button id="btn-reject-trigger" class="btn-red">رفض</button>
+            </div>
+
+            <!-- مربع إدخال سبب الرفض (مخفي افتراضياً) -->
+            <div id="reject-box" style="display: none; margin-top: 15px;">
+                <textarea id="reject-reason-input" placeholder="اكتب سبب الرفض هنا..." rows="3"></textarea>
+                <button id="btn-confirm-reject" class="btn-red">تأكيد الرفض</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
