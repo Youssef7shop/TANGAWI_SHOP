@@ -1,0 +1,60 @@
+<!-- admin/settings.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الإعدادات - Whitelist</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <nav class="admin-nav">
+        <div class="nav-links">
+            <h2>إعدادات السيرفر</h2>
+            <a href="dashboard.html" class="nav-link">العودة للرئيسية</a>
+        </div>
+        <button id="logout-btn">تسجيل الخروج</button>
+    </nav>
+
+    <div class="admin-container">
+        <div class="settings-box">
+            <h3>التحكم في النظام</h3>
+            
+            <form id="settings-form">
+                <!-- حالة التسجيل (مفتوح / مغلق) -->
+                <div class="form-group toggle-group">
+                    <label>حالة التسجيل (الوايت ليست):</label>
+                    <select id="registration_status" required>
+                        <option value="true">مفتوح - يستقبل طلبات جديدة</option>
+                        <option value="false">مغلق - لا يستقبل طلبات</option>
+                    </select>
+                </div>
+
+                <!-- اسم السيرفر -->
+                <div class="form-group">
+                    <label>اسم السيرفر:</label>
+                    <input type="text" id="server_name" required>
+                </div>
+
+                <!-- رسالة الترحيب -->
+                <div class="form-group">
+                    <label>رسالة الترحيب (تظهر في صفحة التقديم):</label>
+                    <textarea id="welcome_message" rows="3" required></textarea>
+                </div>
+
+                <!-- رابط اللوجو (اختياري) -->
+                <div class="form-group">
+                    <label>رابط الشعار (Logo URL):</label>
+                    <input type="url" id="logo_url" placeholder="https://example.com/logo.png">
+                </div>
+
+                <button type="submit" id="save-settings-btn" class="btn-green">حفظ الإعدادات</button>
+                <p id="save-status" class="status-msg" style="display: none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../js/settings.js"></script>
+</body>
+</html>
